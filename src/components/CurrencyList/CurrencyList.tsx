@@ -13,12 +13,13 @@ const CurrencyList = ({ exchange_rates }: TCurrencyList) => {
   const [value, setValue] = useState("");
 
   const getCurrency = exchange_rates.filter((rate) => {
-    return rate.base_ccy === getStorageData("currency").toUpperCase()
+    return rate.base_ccy === getStorageData("currency")?.toUpperCase()
       ? rate
       : null;
   });
+
   const customRateBase = getCurrency.find(
-    (rate) => rate.base_ccy === getStorageData("currency").toUpperCase()
+    (rate) => rate.base_ccy === getStorageData("currency")?.toUpperCase()
   );
   const customRateEUR = getCurrency.find((rate) => rate.ccy === EUR);
   const customRateUSD = getCurrency.find((rate) => rate.ccy === USD);
@@ -41,8 +42,12 @@ const CurrencyList = ({ exchange_rates }: TCurrencyList) => {
       <StCurrencyList>
         <div>
           <StTitle>Base currency: {customRateBase?.base_ccy}</StTitle>
-          <StTitle>1 USD: {Number(customRateEUR?.buy).toFixed(2)}</StTitle>
-          <StTitle>1 EUR: {Number(customRateUSD?.buy).toFixed(2)}</StTitle>
+          <StTitle>
+            1 USD: {customRateEUR ? Number(customRateEUR?.buy).toFixed(2) : ""}
+          </StTitle>
+          <StTitle>
+            1 EUR: {customRateUSD ? Number(customRateUSD?.buy).toFixed(2) : ""}
+          </StTitle>
         </div>
         <div>
           <StTitle>Change base currency</StTitle>
