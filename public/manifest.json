@@ -1,0 +1,8 @@
+{
+  "short_name": "Currency Converter App",
+  "name": "Currency Converter Application",
+  "start_url": ".",
+  "display": "browser",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
