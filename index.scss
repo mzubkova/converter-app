@@ -1,0 +1,7 @@
+@mixin make-fontSize() {
+  @for $i from 1 through 100 {
+    .f-#{$i} {
+      font-size: 1px * $i;
+    }
+  }
+}
